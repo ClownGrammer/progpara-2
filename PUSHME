@@ -1,0 +1,63 @@
+import javafx.application.Application;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class Ociones extends Application {
+    @Override
+    public void start(Stage stage) {
+        // create and configure a text field for user entry
+        TextField pushMeTextField = new TextField();
+        pushMeTextField.setMaxWidth(250);
+
+        // create and configure a label to display the output
+        Label pushMeLabel = new Label();
+        pushMeLabel.setTextFill(Color.RED);
+        pushMeLabel.setFont(Font.font("Arial", 20));
+
+        // create and configure a button to display the entered text
+        Button pushMeButton = new Button("Type something in the box then push me");
+        pushMeButton.setOnAction(e -> pushMeLabel.setText("You entered: " + pushMeTextField.getText()));
+
+        // create and configure a button to capitalize the displayed text
+        Button capitalizeButton = new Button("Capitalize");
+        capitalizeButton.setOnAction(e -> {
+            String capitalizedText = pushMeLabel.getText().toUpperCase();
+            pushMeLabel.setText(capitalizedText);
+        });
+
+        // create and configure a button to convert the displayed text to lowercase
+        Button lowercaseButton = new Button("Lowercase");
+        lowercaseButton.setOnAction(e -> {
+            String lowercaseText = pushMeLabel.getText().toLowerCase();
+            pushMeLabel.setText(lowercaseText);
+        });
+
+        // create and configure a VBox to hold our components
+        VBox root = new VBox();
+        root.setSpacing(10);
+        root.setAlignment(Pos.CENTER);
+
+        // add the components to the VBox
+        root.getChildren().addAll(pushMeTextField, pushMeButton, capitalizeButton, lowercaseButton, pushMeLabel);
+
+        // create a new scene
+        Scene scene = new Scene(root, 300, 250);
+
+        // add the scene to the stage, then configure the stage and make it visible
+        stage.setScene(scene);
+        stage.setTitle("Jester Kian Ociones");
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
